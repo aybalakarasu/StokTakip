@@ -1,0 +1,55 @@
+@model List<StokTakip.Web.ViewModels.StokHareketViewModel>
+@{
+    ViewData["Title"] = "Ürüne Göre Stok Hareketleri";
+    var urunAdi = ViewBag.UrunAdi as string ?? "Bilinmeyen Ürün";
+}
+
+<h2>@urunAdi - Stok Hareketleri</h2>
+<hr />
+
+@if (Model != null && Model.Any())
+{
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Tarih</th>
+                    <th>Adet</th>
+                    <th>Hareket Türü</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var hareket in Model)
+                {
+                    <tr>
+                        <td>@hareket.Id</td>
+                        <td>@hareket.Tarih.ToString("dd.MM.yyyy HH:mm")</td>
+                        <td>@hareket.Adet</td>
+                        <td>
+                            @if (hareket.HareketTuru == StokTakip.Data.Modeller.HareketTuru.Giris)
+                            {
+                                <span class="badge bg-success">@hareket.HareketTuruAciklamasi</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-danger">@hareket.HareketTuruAciklamasi</span>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <div class="alert alert-info">
+        Bu ürüne ait stok hareketi bulunmamaktadır.
+    </div>
+}
+
+<div class="mt-4">
+    <a asp-action="Index" class="btn btn-secondary">Geri Dön</a>
+</div>
+

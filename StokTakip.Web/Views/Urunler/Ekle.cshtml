@@ -1,0 +1,51 @@
+@model StokTakip.Web.ViewModels.UrunOlusturViewModel
+@{
+    ViewData["Title"] = "Yeni Ürün Ekle";
+}
+
+<h2>Yeni Ürün Ekle</h2>
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Ekle" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="mb-3">
+                <label asp-for="Ad" class="form-label"></label>
+                <input asp-for="Ad" class="form-control" />
+                <span asp-validation-for="Ad" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="KategoriId" class="form-label"></label>
+                <select asp-for="KategoriId" asp-items="ViewBag.Kategoriler" class="form-select">
+                    <option value="">-- Kategori Seçin --</option>
+                </select>
+                <span asp-validation-for="KategoriId" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Stok" class="form-label"></label>
+                <input asp-for="Stok" class="form-control" type="number" min="0" />
+                <span asp-validation-for="Stok" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Fiyat" class="form-label"></label>
+                <input asp-for="Fiyat" class="form-control" type="number" step="0.01" min="0.01" />
+                <span asp-validation-for="Fiyat" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary">Kaydet</button>
+                <a asp-action="Index" class="btn btn-secondary">İptal</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

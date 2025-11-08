@@ -1,0 +1,90 @@
+﻿@{
+    ViewData["Title"] = "Ana Sayfa";
+    var urunler = ViewBag.Urunler as List<StokTakip.Web.ViewModels.UrunViewModel>;
+    var sonHareketler = ViewBag.SonHareketler as List<StokTakip.Web.ViewModels.StokHareketViewModel>;
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="mb-4">Stok Takip Sistemi</h1>
+        <p class="lead">Hoş geldiniz! Stok yönetimi için tüm işlemlerinizi buradan yapabilirsiniz.</p>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">Ürünler</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">Toplam ürün sayısı: <strong>@(urunler?.Count ?? 0)</strong></p>
+                <a asp-controller="Urunler" asp-action="Index" class="btn btn-primary">Ürünleri Görüntüle</a>
+                <a asp-controller="Urunler" asp-action="Ekle" class="btn btn-success">Yeni Ürün Ekle</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-info text-white">
+                <h5 class="mb-0">Stok Hareketleri</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">Son hareketler görüntüleniyor.</p>
+                <a asp-controller="StokHareketleri" asp-action="Index" class="btn btn-info">Tüm Hareketleri Görüntüle</a>
+                <a asp-controller="StokHareketleri" asp-action="Ekle" class="btn btn-success">Yeni Hareket Ekle</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header bg-secondary text-white">
+                <h5 class="mb-0">Son Stok Hareketleri</h5>
+            </div>
+            <div class="card-body">
+                @if (sonHareketler != null && sonHareketler.Any())
+                {
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Tarih</th>
+                                    <th>Ürün</th>
+                                    <th>Adet</th>
+                                    <th>Hareket Türü</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var hareket in sonHareketler)
+                                {
+                                    <tr>
+                                        <td>@hareket.Tarih.ToString("dd.MM.yyyy HH:mm")</td>
+                                        <td>@hareket.UrunAdi</td>
+                                        <td>@hareket.Adet</td>
+                                        <td>
+                                            @if (hareket.HareketTuru == StokTakip.Data.Modeller.HareketTuru.Giris)
+                                            {
+                                                <span class="badge bg-success">@hareket.HareketTuruAciklamasi</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="badge bg-danger">@hareket.HareketTuruAciklamasi</span>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+                else
+                {
+                    <p class="text-muted">Henüz stok hareketi bulunmamaktadır.</p>
+                }
+            </div>
+        </div>
+    </div>
+</div>

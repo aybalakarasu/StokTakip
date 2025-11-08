@@ -1,0 +1,54 @@
+@model List<StokTakip.Web.ViewModels.StokHareketViewModel>
+@{
+    ViewData["Title"] = "Stok Hareketleri";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Stok Hareketleri</h2>
+    <a asp-action="Ekle" class="btn btn-primary">Yeni Stok Hareketi Ekle</a>
+</div>
+
+@if (Model != null && Model.Any())
+{
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Tarih</th>
+                    <th>Ürün</th>
+                    <th>Adet</th>
+                    <th>Hareket Türü</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var hareket in Model)
+                {
+                    <tr>
+                        <td>@hareket.Id</td>
+                        <td>@hareket.Tarih.ToString("dd.MM.yyyy HH:mm")</td>
+                        <td>@hareket.UrunAdi</td>
+                        <td>@hareket.Adet</td>
+                        <td>
+                            @if (hareket.HareketTuru == StokTakip.Data.Modeller.HareketTuru.Giris)
+                            {
+                                <span class="badge bg-success">@hareket.HareketTuruAciklamasi</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-danger">@hareket.HareketTuruAciklamasi</span>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <div class="alert alert-info">
+        Henüz stok hareketi eklenmemiş. <a asp-action="Ekle">İlk stok hareketini eklemek için tıklayın.</a>
+    </div>
+}
+

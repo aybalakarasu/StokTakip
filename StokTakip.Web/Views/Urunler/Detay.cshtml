@@ -1,0 +1,43 @@
+@model StokTakip.Web.ViewModels.UrunViewModel
+@{
+    ViewData["Title"] = "Ürün Detayı";
+}
+
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <h2>Ürün Detayı</h2>
+        <hr />
+
+        <dl class="row">
+            <dt class="col-sm-3">ID:</dt>
+            <dd class="col-sm-9">@Model.Id</dd>
+
+            <dt class="col-sm-3">Ürün Adı:</dt>
+            <dd class="col-sm-9">@Model.Ad</dd>
+
+            <dt class="col-sm-3">Kategori:</dt>
+            <dd class="col-sm-9">@Model.KategoriAdi</dd>
+
+            <dt class="col-sm-3">Stok Miktarı:</dt>
+            <dd class="col-sm-9">
+                @if (Model.Stok < 10)
+                {
+                    <span class="badge bg-warning">@Model.Stok</span>
+                }
+                else
+                {
+                    <span class="badge bg-success">@Model.Stok</span>
+                }
+            </dd>
+
+            <dt class="col-sm-3">Fiyat:</dt>
+            <dd class="col-sm-9">@Model.Fiyat.ToString("C2")</dd>
+        </dl>
+
+        <div class="mt-4">
+            <a asp-action="Index" class="btn btn-secondary">Geri Dön</a>
+            <a asp-action="Duzenle" asp-route-id="@Model.Id" class="btn btn-primary">Düzenle</a>
+        </div>
+    </div>
+</div>
+

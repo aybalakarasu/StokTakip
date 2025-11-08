@@ -1,0 +1,54 @@
+@model StokTakip.Web.ViewModels.StokHareketOlusturViewModel
+@{
+    ViewData["Title"] = "Yeni Stok Hareketi Ekle";
+}
+
+<h2>Yeni Stok Hareketi Ekle</h2>
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Ekle" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="mb-3">
+                <label asp-for="UrunId" class="form-label"></label>
+                <select asp-for="UrunId" asp-items="ViewBag.Urunler" class="form-select">
+                    <option value="">-- Ürün Seçin --</option>
+                </select>
+                <span asp-validation-for="UrunId" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="HareketTuru" class="form-label"></label>
+                <select asp-for="HareketTuru" asp-items="ViewBag.HareketTurleri" class="form-select">
+                    <option value="">-- Hareket Türü Seçin --</option>
+                </select>
+                <span asp-validation-for="HareketTuru" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Adet" class="form-label"></label>
+                <input asp-for="Adet" class="form-control" type="number" min="1" />
+                <span asp-validation-for="Adet" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Tarih" class="form-label"></label>
+                <input asp-for="Tarih" class="form-control" type="datetime-local" />
+                <span asp-validation-for="Tarih" class="text-danger"></span>
+                <small class="form-text text-muted">Boş bırakılırsa şu anki tarih kullanılır.</small>
+            </div>
+
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary">Kaydet</button>
+                <a asp-action="Index" class="btn btn-secondary">İptal</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

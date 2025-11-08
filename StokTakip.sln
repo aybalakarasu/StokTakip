@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StokTakip.Data", "StokTakip.Data\StokTakip.Data.csproj", "{8175378D-B492-49EA-9C64-FC970211CF46}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StokTakip.Servis", "StokTakip.Servis\StokTakip.Servis.csproj", "{37962363-B5E8-4CA0-9B13-DBA9507A647B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StokTakip.API", "StokTakip.API\StokTakip.API.csproj", "{46F104FD-8FB8-44E7-BB7C-4AA566B9FBE1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StokTakip.Web", "StokTakip.Web\StokTakip.Web.csproj", "{677BEBB7-32B9-40D7-BDBB-29B71CFE35B0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8175378D-B492-49EA-9C64-FC970211CF46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8175378D-B492-49EA-9C64-FC970211CF46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8175378D-B492-49EA-9C64-FC970211CF46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8175378D-B492-49EA-9C64-FC970211CF46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37962363-B5E8-4CA0-9B13-DBA9507A647B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37962363-B5E8-4CA0-9B13-DBA9507A647B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37962363-B5E8-4CA0-9B13-DBA9507A647B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37962363-B5E8-4CA0-9B13-DBA9507A647B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46F104FD-8FB8-44E7-BB7C-4AA566B9FBE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46F104FD-8FB8-44E7-BB7C-4AA566B9FBE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46F104FD-8FB8-44E7-BB7C-4AA566B9FBE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46F104FD-8FB8-44E7-BB7C-4AA566B9FBE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{677BEBB7-32B9-40D7-BDBB-29B71CFE35B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{677BEBB7-32B9-40D7-BDBB-29B71CFE35B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{677BEBB7-32B9-40D7-BDBB-29B71CFE35B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{677BEBB7-32B9-40D7-BDBB-29B71CFE35B0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
